@@ -1,0 +1,45 @@
+#!/usr/bin/python3
+
+import argparse
+from xml.dom import minidom
+import sys
+
+
+def parse_args(arg: list[str]) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Pretty print XML file")
+    parser.add_argument(
+        "--input",
+        metavar="PATH_TO_INPUT_XML",
+        type=str,
+        default="-",
+        dest="input",
+        help=""" Path to the input XML file to be pretty printed. If "-", read from stdin. The default is "-".""",
+    )
+    parser.add_argument(
+        "--output",
+        metavar="PATH_TO_OUTPUT_XML",
+        type=str,
+        default="-",
+        action="store",
+        help="""Path to the output XML file. If "-", write into stdout. The default is "-".""",
+    )
+    return parser.parse_args(arg)
+
+
+def read_xml(path: str) -> minidom.Document:
+    if path == "-":
+        return minidom.parse(sys.stdin)
+    else:
+        return minidom.parse(path)
+
+
+def write_xml(doc: minidom.Document, path: str):
+    if path == "-":
+        sys.stdout.write(doc.toprettyxml())
+    else:
+        open(path, "w").write(doc.toprettyxml())
+
+
+if __name__ == "__main__":
+    args = parse_args(sys.argv[1:])
+    write_xml(read_xml(args.input), args.output)
