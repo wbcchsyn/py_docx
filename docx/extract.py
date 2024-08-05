@@ -1,3 +1,5 @@
+# -*- python -*-
+
 from xml.dom import minidom
 from zipfile import ZipFile
 
