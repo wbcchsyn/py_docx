@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+
+import sys
+from zipfile import ZipFile
+
+if __name__ == "__main__":
+    import argparse
+
+    DESCRIPTION = """
+        DOCX is a zip file containing XML files. This script extracts the main xml "word/document.xml".
+    """
+    parser = argparse.ArgumentParser(
+        description=DESCRIPTION.strip(),
+    )
+    parser.add_argument(
+        "input",
+        metavar="PATH_TO_DOCX",
+        help="""Path to the docx file to extract.""",
+    )
+    parser.add_argument(
+        "--output",
+        metavar="PATH_TO_XML",
+        default="-",
+        help="""Path to the output xml file. If "-", write into stdout. The default is "-".""",
+    )
+
+    args = parser.parse_args(sys.argv[1:])
+
+    # The xml file should be utf-8 encoded.
+    page_contents = ZipFile(args.input).read("word/document.xml").decode("utf-8")
+    if args.output == "-":
+        sys.stdout.write(page_contents)
+    else:
+        open(args.output, "w").write(page_contents)
