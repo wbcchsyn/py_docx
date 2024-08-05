@@ -9,8 +9,8 @@ if __name__ == "__main__":
 
     DESCRIPTION = (
         "Files with .docx extension are actually zip files,"
-        "and the main content is stored in word/document.xml."
-        'This script extracts the main xml "word/document.xml" from a docx file.'
+        "and the main contents is stored in word/document.xml."
+        'This script extracts "word/document.xml" from a docx file.'
     )
     parser = argparse.ArgumentParser(description=DESCRIPTION)
 
