@@ -1,21 +1,22 @@
 #!/usr/bin/env python3
 
 import sys
-from zipfile import ZipFile
+from extract import docx2xml
 
 if __name__ == "__main__":
     import argparse
 
-    DESCRIPTION = """
-        DOCX is a zip file containing XML files. This script extracts the main xml "word/document.xml".
-    """
-    parser = argparse.ArgumentParser(
-        description=DESCRIPTION.strip(),
+    DESCRIPTION = (
+        "Files with .docx extension are actually zip files,"
+        "and the main content is stored in word/document.xml."
+        'This script extracts the main xml "word/document.xml" from a docx file.'
     )
+    parser = argparse.ArgumentParser(description=DESCRIPTION)
+
     parser.add_argument(
         "input",
         metavar="PATH_TO_DOCX",
-        help="""Path to the docx file to extract.""",
+        help="""Path to the docx file to be extracted.""",
     )
     parser.add_argument(
         "--output",
@@ -25,10 +26,9 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args(sys.argv[1:])
+    xml = docx2xml(args.input)
 
-    # The xml file should be utf-8 encoded.
-    page_contents = ZipFile(args.input).read("word/document.xml").decode("utf-8")
     if args.output == "-":
-        sys.stdout.write(page_contents)
+        sys.stdout.write(xml)
     else:
-        open(args.output, "w").write(page_contents)
+        open(args.output, "w").write(xml)
