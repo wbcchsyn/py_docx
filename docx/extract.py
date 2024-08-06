@@ -32,6 +32,6 @@ def xml2text(xml: str) -> str:
         if isinstance(node, minidom.Text):
             texts.append(node.data)
         else:
-            stack.extend(reversed(node.childNodes))
+            stack.extend(node.childNodes)
 
-    return "".join(texts)
+    return "".join(reversed(texts))
