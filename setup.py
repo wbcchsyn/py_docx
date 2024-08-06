@@ -2,14 +2,14 @@
 # -*- coding: utf-8 -*-
 # -*- python -*-
 
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 setup(
-    name='docx',
-    version='0.0.1',
-    description='A simple python library to read docx files',
-    author='Shin Yoshida',
+    name="docx",
+    version="0.0.1",
+    description="A simple python library to read docx files",
+    author="Shin Yoshida",
     packages=find_packages(),
-    license='MIT',
+    license="MIT",
     scripts=["bin/docx2xml", "bin/xml2text", "bin/pretty_xml"],
 )
