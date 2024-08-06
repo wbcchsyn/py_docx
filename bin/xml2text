@@ -4,7 +4,7 @@
 import argparse
 import sys
 
-from extract import xml2text
+from docx import xml2text
 
 
 def parse_args(args: list[str]) -> argparse.Namespace:

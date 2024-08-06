@@ -3,7 +3,7 @@
 
 import sys
 
-from extract import docx2xml
+from docx import docx2xml
 
 if __name__ == "__main__":
     import argparse
