@@ -2,6 +2,7 @@
 # -*- python -*-
 
 import sys
+
 from extract import docx2xml
 
 if __name__ == "__main__":

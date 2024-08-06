@@ -2,8 +2,8 @@
 # -*- python -*-
 
 import argparse
-from xml.dom import minidom
 import sys
+from xml.dom import minidom
 
 
 def parse_args(arg: list[str]) -> argparse.Namespace:
