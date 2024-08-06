@@ -9,9 +9,17 @@ from docx import xml2text
 
 def parse_args(args: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser("Strip metadata and extract text from a XML file.")
-    parser.add_argument("--input", type=str, default="-", help="The file to extract text from. The default is stdin.")
     parser.add_argument(
-        "--output", type=str, default="-", help="The file to write the extracted text to. The default is stdout."
+        "--input",
+        type=str,
+        default="-",
+        help="""Path to the xml file to be extracted the text. If "-", read from stdin. The default is "-".""",
+    )
+    parser.add_argument(
+        "--output",
+        type=str,
+        default="-",
+        help="""Path to the output to be written. If "-", write into stdout. The default is "-".""",
     )
     return parser.parse_args(args)
 

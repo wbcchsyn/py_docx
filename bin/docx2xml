@@ -24,7 +24,7 @@ if __name__ == "__main__":
         "--output",
         metavar="PATH_TO_XML",
         default="-",
-        help="""Path to the output xml file. If "-", write into stdout. The default is "-".""",
+        help="""Path to the output to be written. If "-", write into stdout. The default is "-".""",
     )
 
     args = parser.parse_args(sys.argv[1:])

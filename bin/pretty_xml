@@ -22,7 +22,7 @@ def parse_args(arg: list[str]) -> argparse.Namespace:
         type=str,
         default="-",
         action="store",
-        help="""Path to the output XML file. If "-", write into stdout. The default is "-".""",
+        help="""Path to the output file to be written. If "-", write into stdout. The default is "-".""",
     )
     return parser.parse_args(arg)
 
