@@ -1,1 +1,16 @@
-docx.egg-info
+.DS_Store
+*.swp
+*~
+*.pyc
+*.orig
+tags
+TAGS
+.#*
+GPATH
+GTAGS
+GRTAGS
+GSYMS
+*.vscode
+core
+.devcontainer
+*.egg-info
