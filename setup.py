@@ -11,4 +11,5 @@ setup(
     author='Shin Yoshida',
     packages=find_packages(),
     license='MIT',
+    scripts=["bin/docx2xml", "bin/xml2text", "bin/pretty_xml"],
 )
