@@ -23,15 +23,21 @@ def xml2text(xml: str) -> str:
     Extracts the text from the XML document
     """
 
-    stack = [minidom.parseString(xml)]
+    stack = []
     texts = []
+
+    doc = minidom.parseString(xml)
+    stack.extend(doc.childNodes)
 
     while stack:
         node = stack.pop()
 
         if isinstance(node, minidom.Text):
             texts.append(node.data)
-        else:
-            stack.extend(node.childNodes)
+            continue
+
+        if node.tagName == "w:p":
+            texts.append("\n")
+        stack.extend(node.childNodes)
 
     return "".join(reversed(texts))
